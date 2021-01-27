@@ -100,6 +100,8 @@ document.addEventListener("keyup", function (event) {
 			localStorage.setItem("TODO", JSON.stringify(todoLists));
 
 			id++;
+		} else {
+			alert("Please type your todo");
 		}
 		input.value = "";
 	}
