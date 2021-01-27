@@ -23,6 +23,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	box-shadow: 0 0 37px 7px rgba(0, 0, 0, 0.1);
+	position: relative;
 }
 
 .fa {
@@ -76,16 +77,24 @@ body {
 	margin-top: 30px;
 	overflow-y: scroll;
 }
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 .content::-webkit-scrollbar {
 	display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.example {
+.content {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
+}
+
+.content .todos-watermark {
+	position: absolute;
+	top: 57%;
+	left: 35%;
+	letter-spacing: 5px;
+	font-weight: 200;
+	color: #d3d3d361;
 }
 
 .content #list li {
@@ -98,10 +107,12 @@ body {
 	margin-bottom: 20px;
 	padding: 13px 0;
 	border-radius: 4px;
+	cursor: pointer;
 }
 
 .content #list .item .text {
 	margin-left: 5px;
+	margin-right: 5px;
 	font-size: 0.8em;
 	color: #454545cf;
 }
@@ -116,8 +127,18 @@ body {
 	color: #ff1919f5;
 }
 
+.fa-check-circle {
+	color: rgb(0, 190, 0);
+}
+
+.lineThrough {
+	text-decoration: line-through;
+	color: #ccc !important;
+}
+
 /* add todo section  */
 .add-item {
+	background: #ffffff;
 	margin-top: auto;
 	padding: 12px 15px;
 	border-top: 1px solid lightgray;
@@ -125,8 +146,8 @@ body {
 	align-items: center;
 }
 .add-item .add {
-	font-size: 1.1em;
-	color: #00c255d4;
+	font-size: 1.3em;
+	color: #0d36f1d4;
 }
 
 .add-item #todo-input {
@@ -135,4 +156,8 @@ body {
 	width: 100%;
 	font-size: 1.1em;
 	margin-left: 5px;
+	color: #0d37f1a9;
+}
+.add-item #todo-input::placeholder {
+	color: #0d37f1a9;
 }
