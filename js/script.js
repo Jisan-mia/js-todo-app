@@ -2,6 +2,7 @@
 const clear = document.querySelector(".clear");
 const list = document.getElementById("list");
 const input = document.getElementById("todo-input");
+const addBtn = document.querySelector(".add");
 
 const time = document.getElementById("time");
 const date = document.getElementById("date");
@@ -81,29 +82,36 @@ function addToDo(todo, id, done, trash) {
 	const position = "beforeend";
 	list.insertAdjacentHTML(position, item);
 }
+//add item to the list function
+function itemToBeAdded() {
+	let todo = input.value;
+	if (todo) {
+		addToDo(todo, id, false, false);
 
-//add an item to the list user the enter key
+		todoLists.push({
+			name: todo,
+			id: id,
+			done: false,
+			trash: false,
+		});
+
+		//set item to localStorage (this code must be added where the todoLists array updated)
+		localStorage.setItem("TODO", JSON.stringify(todoLists));
+
+		id++;
+	} else {
+		alert("Please type your todo");
+	}
+	input.value = "";
+}
+
+//add an item to the list when user click enter func
+addBtn.addEventListener("click", itemToBeAdded);
+
+//add an item to the list in enter key
 document.addEventListener("keyup", function (event) {
 	if (event.keyCode == 13) {
-		let todo = input.value;
-		if (todo) {
-			addToDo(todo, id, false, false);
-
-			todoLists.push({
-				name: todo,
-				id: id,
-				done: false,
-				trash: false,
-			});
-
-			//set item to localStorage (this code must be added where the todoLists array updated)
-			localStorage.setItem("TODO", JSON.stringify(todoLists));
-
-			id++;
-		} else {
-			alert("Please type your todo");
-		}
-		input.value = "";
+		itemToBeAdded();
 	}
 });
 
